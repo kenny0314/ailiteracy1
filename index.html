@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>AI Literacy Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Cyberpunk CSS for neon fonts -->
+  <link rel="stylesheet" href="https://alddesign.github.io/cyberpunk-css/dist/cyberpunk.min.css">
+</head>
+<body>
+  <!-- 近未来風グリッド背景 -->
+  <div class="grid-bg"></div>
+
+  <!-- スプラッシュ画面 -->
+  <div id="splash">
+    <h1 class="cyberpunk-font-og">Welcome to AI Literacy Quiz</h1>
+    <p>Test your skills in spotting AI-generated content & fake news.</p>
+    <button id="startBtn" class="cyberpunk-font">Start Quiz</button>
+  </div>
+
+  <!-- クイズ画面 -->
+  <div id="quiz" class="hidden">
+    <div class="container">
+      <h1 class="cyberpunk-font-og">AI-Generated Content & Fake News Quiz</h1>
+      <div id="timer">Time left: <span id="time">15</span>s</div>
+      <div id="question"></div>
+      <div id="choices"></div>
+      <button id="next" disabled>Next</button>
+    </div>
+  </div>
+
+  <!-- 結果画面 -->
+  <div id="result" class="hidden container">
+    <h2 class="cyberpunk-font-og">Your AI Literacy Score</h2>
+    <p id="scoreText"></p>
+    <button id="restart" class="cyberpunk-font">Retry Quiz</button>
+    <button id="backToStart" class="cyberpunk-font">Back to Start</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

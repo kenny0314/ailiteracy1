@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // --- 質問データ ---
   const quiz = [
     {
       question: "1. Which clue often reveals an AI-generated image?",
@@ -55,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let current = 0, score = 0, timeLeft = 15, timerId;
 
-  // --- DOM 要素取得 ---
   const splash      = document.getElementById('splash');
   const startBtn    = document.getElementById('startBtn');
   const quizScreen  = document.getElementById('quiz');
@@ -68,33 +66,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const backBtn     = document.getElementById('backToStart');
   const scoreEl     = document.getElementById('scoreText');
 
-  // --- スプラッシュ → クイズ開始 ---
   startBtn.addEventListener('click', () => {
     splash.classList.add('hidden');
     quizScreen.classList.remove('hidden');
     loadQuestion();
   });
 
-  // --- 再挑戦 ---
   restartBtn.addEventListener('click', () => {
     resetAll();
     quizScreen.classList.remove('hidden');
   });
 
-  // --- スプラッシュへ戻る ---
   backBtn.addEventListener('click', () => {
     resetAll();
     splash.classList.remove('hidden');
   });
 
-  // --- Nextボタン ---
   nextBtn.addEventListener('click', () => {
     current++;
     if (current < quiz.length) loadQuestion();
     else showResult();
   });
 
-  // --- 全リセット関数 ---
   function resetAll() {
     clearInterval(timerId);
     current = 0; score = 0;
@@ -103,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.disabled = true;
   }
 
-  // --- タイマー開始 ---
   function startTimer() {
     timeLeft = 15;
     timerEl.textContent = timeLeft;
@@ -113,12 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
       timerEl.textContent = timeLeft;
       if (timeLeft <= 0) {
         clearInterval(timerId);
-        selectAnswer(null); // タイムアウト扱い
+        selectAnswer(null);
       }
     }, 1000);
   }
 
-  // --- 問題ロード ---
   function loadQuestion() {
     nextBtn.disabled = true;
     choicesEl.innerHTML = '';
@@ -133,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     startTimer();
   }
 
-  // --- 回答処理 ---
   function selectAnswer(idx) {
     clearInterval(timerId);
     Array.from(choicesEl.children).forEach((btn, i) => {
@@ -145,10 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.disabled = false;
   }
 
-  // --- 結果表示 ---
   function showResult() {
     quizScreen.classList.add('hidden');
     resultScreen.classList.remove('hidden');
     scoreEl.textContent = `${score} / ${quiz.length}`;
   }
 });
+

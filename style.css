@@ -19,7 +19,11 @@ html, body {
   text-align: center;
   z-index: 1;
 }
-.hidden { display: none; }
+
+/* hidden を強制上書き */
+.hidden {
+  display: none !important;
+}
 
 /* グリッド背景 */
 .grid-bg {
